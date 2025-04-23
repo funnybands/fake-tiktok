@@ -1,50 +1,66 @@
 import { useState } from 'react';
 import { MoreHorizontal, Plus, Home, ShoppingBag, MessageCircle, User, Lock, Repeat, QrCode, Settings, Wallet } from 'lucide-react';
-
+import BalancePage from './balance';
+import { useNavigate } from 'react-router-dom';
 // Settings Popup Component defined inline
 const SettingsPopup = ({ isOpen, onClose }) => {
+  const navigate = useNavigate()
   if (!isOpen) return null;
 
+const openMobileDashboard = () => {
+  navigate('/balance')
+};
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-end justify-center">
-      <div className="bg-white w-full max-w-md rounded-t-xl">
-        <div className="p-4 pb-8">
-          <div className="space-y-5">
-            <div className="flex items-center px-2 py-1">
-              <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-              </svg>
-              <span className="text-lg font-normal">TikTok Studio</span>
-            </div>
-            
-            <div className="flex items-center justify-between px-2 py-1">
-              <div className="flex items-center">
-                <Wallet className="w-5 h-5 mr-3" />
-                <span className="text-lg font-normal">Balance</span>
-              </div>
-              <span className="text-gray-500">10000000 US$</span>
-            </div>
-            
-            <div className="flex items-center px-2 py-1">
-              <QrCode className="w-5 h-5 mr-3" />
-              <span className="text-lg font-normal">My QR code</span>
-            </div>
-            
-            <div className="flex items-center px-2 py-1">
-              <Settings className="w-5 h-5 mr-3" />
-              <span className="text-lg font-normal">Settings and privacy</span>
-            </div>
-          </div>
-        </div>
+
+    <div 
+  className="fixed inset-0 bg-black/70 bg-opacity-50 z-50 flex items-end justify-center" 
+  onClick={onClose}
+>
+  <div 
+    className="bg-white w-full max-w-md rounded-t-xl p-4" 
+    onClick={(e) => e.stopPropagation()}
+  >
+    <div className="space-y-6">
+      <div className="flex items-center">
+        <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+        <span className="text-lg">TikTok Studio</span>
       </div>
-    </div>
-  );
+
+      {/* Make the whole Balance clickable */}
+      <div 
+        className="flex items-center justify-between cursor-pointer"
+        onClick={openMobileDashboard} // call your function
+      >
+        <div className="flex items-center">
+          <Wallet className="w-5 h-5 mr-3" />
+          <span className="text-lg">Balance</span>
+        </div>
+        <span className="text-gray-500">10000000 US$</span>
+      </div>
+
+      <div className="flex items-center">
+        <QrCode className="w-5 h-5 mr-3" />
+        <span className="text-lg">My QR code</span>
+      </div>
+
+      <div className="flex items-center">
+        <Settings className="w-5 h-5 mr-3" />
+        <span className="text-lg">Settings and privacy</span>
+      </div>
+    </div> 
+  </div>
+</div>
+
+);
 };
 
 // Main TikTok Profile Component
 export default function TikTokProfile() {
   const [activeTab, setActiveTab] = useState('videos');
-  const [isSettingsOpen, setIsSettingsOpen] = useState(true); // Set to true to show popup by default
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   
   const openSettings = () => setIsSettingsOpen(true);
   const closeSettings = () => setIsSettingsOpen(false);
