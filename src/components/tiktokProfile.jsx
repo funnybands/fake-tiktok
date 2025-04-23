@@ -66,7 +66,7 @@ export default function TikTokProfile() {
   const closeSettings = () => setIsSettingsOpen(false);
   
   return (
-    <div className="flex flex-col bg-white min-h-screen max-w-md mx-auto relative">
+    <div className="flex flex-col bg-white min-h-screen max-w-md mx-auto">
       {/* Top navigation */}
       <div className="flex justify-between items-center p-4">
         <div className="flex items-center">
