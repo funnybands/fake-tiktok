@@ -36,8 +36,8 @@ export default function BalancePage() {
       </div>
 
       {/* Coins Card */}
-      <div className="mx-4 bg-gray-800 rounded-xl overflow-hidden">
-        <div className="p-4">
+      <div className="mx-4 bg-black/89 rounded-xl overflow-hidden">
+        <div className="p-4 h-30">
           <div className="text-gray-400 text-sm mb-1">Coins</div>
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -53,7 +53,7 @@ export default function BalancePage() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 p-4">
+        <div className="border-t border-gray-700 p-4 h-20">
           <div className="flex justify-between items-center">
             <div>
               <p className="text-gray-400 text-sm">Estimated balance</p>
@@ -69,7 +69,7 @@ export default function BalancePage() {
 
       {/* First Recharge Package */}
       <div className="mx-4 mt-4 bg-white rounded-xl p-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center h-30">
           <div>
             <p className="font-semibold text-base">First recharge package</p>
             <p className="text-gray-400 text-sm">Get Gifts and bonus Coins</p>
@@ -86,7 +86,7 @@ export default function BalancePage() {
 
       {/* Monetization */}
       <div className="mx-4 mt-4">
-        <div className="flex justify-between items-center mb-2">
+        <div className="flex justify-between items-center mb-2 h-15">
           <p className="font-bold text-xl">Monetization</p>
           <div className="flex items-center text-gray-500 text-sm">
             <span>View more</span>
@@ -118,7 +118,7 @@ export default function BalancePage() {
         <p className="font-bold text-xl mb-2">Services</p>
         
         <div className="bg-white rounded-xl overflow-hidden">
-          <div className="flex justify-between items-center p-4 border-b border-gray-100">
+          <div className="flex justify-between items-center p-4 border-b border-gray-100 h-20">
             <div className="flex items-center">
               <div className="bg-gray-100 rounded p-1 mr-3">
                 <svg className="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -132,7 +132,7 @@ export default function BalancePage() {
             <ChevronRight className="w-5 h-5 text-gray-300" />
           </div>
           
-          <div className="flex justify-between items-center p-4">
+          <div className="flex justify-between items-center p-4 h-20">
             <div className="flex items-center">
               <div className="bg-gray-100 rounded p-1 mr-3">
                 <Shield className="w-5 h-5 text-gray-500" />

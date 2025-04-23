@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import TikTokProfile from './components/tiktokProfile'
 import BalancePage from './components/balance'
+import InstallPWA from './components/installPwa'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<TikTokProfile />} />
         <Route path="/balance" element={<BalancePage/>} />
+        <Route path="/install" element={<InstallPWA/>} />
       </Routes>
     </Router>
   )
