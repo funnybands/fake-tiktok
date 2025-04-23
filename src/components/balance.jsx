@@ -6,6 +6,9 @@ export default function BalancePage() {
   const goBack = () => {
     navigate('/')
   };
+  const toBalanceDetail = () => {
+    navigate('/balance-detail')
+  };
 
   return (
     // <div className="bg-gray-100 min-h-screen text-gray-900 font-sans max-w-md mx-auto">
@@ -53,7 +56,7 @@ export default function BalancePage() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 p-4 h-20">
+        <div className="border-t border-gray-700 p-4 h-20" onClick={toBalanceDetail}>
           <div className="flex justify-between items-center">
             <div>
               <p className="text-gray-400 text-sm">Estimated balance</p>
