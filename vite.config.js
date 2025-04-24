@@ -20,9 +20,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'My Awesome App',
-        short_name: 'MyApp',
-        description: 'My Awesome App description',
+        name: 'tiktok',
+        short_name: 'tiktok',
+        description: 'tiktok',
         theme_color: '#ffffff',
         icons: [
           {
