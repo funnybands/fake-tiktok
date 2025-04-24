@@ -176,7 +176,7 @@ export default function SocialMetricsForm() {
           </div>
         </form>
         
-        {/* {showSavedData && (
+        {showSavedData && (
           <div className="mt-6 border-t pt-4">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-medium text-gray-900">Saved Data</h2>
@@ -196,7 +196,7 @@ export default function SocialMetricsForm() {
               <p><span className="font-semibold">VLikes:</span> {vlikes}</p>
             </div>
           </div>
-        )} */}
+        )}
       </div>
     </div>
     </>

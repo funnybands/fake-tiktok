@@ -7,9 +7,16 @@ const InstallPage = () => {
 
   useEffect(() => {
     // Check if the app is already installed (running in standalone mode)
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      setIsStandalone(true);  // If the app is in standalone mode, it's already installed
-    }
+    const checkStandaloneMode = () => {
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        setIsStandalone(true);  // If the app is in standalone mode, it's already installed
+      } else {
+        setIsStandalone(false);  // App is not installed yet
+      }
+    };
+
+    // Initial check when the component mounts
+    checkStandaloneMode();
 
     // Listen for the 'beforeinstallprompt' event and store the event to trigger the install prompt
     const handleBeforeInstallPrompt = (e) => {
@@ -21,9 +28,13 @@ const InstallPage = () => {
     // Listen to the beforeinstallprompt event
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-    // Clean up the event listener
+    // Listen to changes in display mode to detect installation
+    window.addEventListener('appinstalled', checkStandaloneMode);
+
+    // Clean up event listeners
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', checkStandaloneMode);
     };
   }, []);
 
@@ -44,6 +55,7 @@ const InstallPage = () => {
     }
   };
 
+  // If the app is already installed (in standalone mode)
   if (isStandalone) {
     return (
       <div>
@@ -53,29 +65,14 @@ const InstallPage = () => {
     );
   }
 
+  // If the app is not installed and is installable
   return (
     <div>
+      <h1>Install the PWA</h1>
+      <p>This website can be installed as a Progressive Web App. Please install it to continue using the app.</p>
+
       {isInstallable && (
-        <button 
-        onClick={handleInstallClick} 
-        style={{
-          backgroundColor: '#007bff',   // Blue background
-          color: 'white',               // White text
-          padding: '15px 30px',         // Large padding for a bigger button
-          borderRadius: '8px',          // Rounded corners
-          fontSize: '16px',             // Bigger font size
-          fontWeight: 'bold',           // Make text bold
-          border: 'none',               // Remove default border
-          cursor: 'pointer',           // Pointer cursor on hover
-          boxShadow: '0 4px 8px rgba(0, 123, 255, 0.4)', // Shadow for depth effect
-          transition: 'all 0.3s ease',  // Smooth transition for hover effect
-        }}
-        onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'} // Darker blue on hover
-        onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}  // Revert to original color on mouse out
-      >
-        Install App
-      </button>
-      
+        <button onClick={handleInstallClick}>Install App</button> // Show the button only if PWA is installable
       )}
 
       {!isInstallable && <p>Your browser doesn't support installing this PWA.</p>}
