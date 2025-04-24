@@ -32,7 +32,7 @@ export default function BalanceDetailsPage() {
         <span>Estimated amount</span>
         <Info className="w-4 h-4" />
     </div>
-    <div className="text-4xl font-bold">USD10000000</div>
+    <div className="text-4xl font-bold">USD{localStorage.getItem('balance')}</div>
     </div>
     </div>
 
@@ -44,14 +44,14 @@ export default function BalanceDetailsPage() {
         <h2 className="text-lg font-semibold">LIVE rewards</h2>
       </div>    
       <div className="flex items-center">
-        <span className="mr-2 font-semibold">USD10,000,000</span>
+        <span className="mr-2 font-semibold">USD{localStorage.getItem('balance')}</span>
         <ChevronRight className="w-5 h-5 text-gray-400" />
       </div>
     </div>
 
     <div className="flex justify-around items-center text-gray-500 w-full pb-4">
       <span className="text-sm">
-        Accumulated Diamonds: <span className="text-yellow-500 text-sm">💎 940000000</span>
+        Accumulated Diamonds: <span className="text-yellow-500 text-sm">💎 {localStorage.getItem('availableRewards')}</span>
       </span>
       <div></div>
     </div>

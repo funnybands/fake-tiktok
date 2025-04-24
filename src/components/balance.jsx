@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ChevronRight, Gift, Shield, CreditCard, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { TbDeviceTvFilled } from "react-icons/tb";
 export default function BalancePage() {
     const navigate = useNavigate();
   const goBack = () => {
@@ -47,7 +48,7 @@ export default function BalancePage() {
               <div className="bg-yellow-500 w-6 h-6 rounded-full flex items-center justify-center mr-2">
                 <span className="text-white font-bold">₱</span>
               </div>
-              <span className="text-2xl font-bold text-white">940,000,000</span>
+              <span className="text-2xl font-bold text-white">{localStorage.getItem('availableRewards')}</span>
             </div>
             <div className="flex items-center text-gray-400">
               <span className="text-sm">Get Coins</span>
@@ -60,7 +61,7 @@ export default function BalancePage() {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-gray-400 text-sm">Estimated balance</p>
-              <p className="text-xl font-bold text-white">USD10,000,000</p>
+              <p className="text-xl font-bold text-white">USD{localStorage.getItem('balance')}</p>
             </div>
             <div className="flex items-center text-gray-400">
               <span className="text-sm">View</span>
@@ -97,23 +98,25 @@ export default function BalancePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center">
-            <div className="bg-gray-100 rounded-lg p-2 mb-2">
-              <svg className="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M21 12c0 1.2-4 6-9 6s-9-4.8-9-6c0-1.2 4-6 9-6s9 4.8 9 6z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="12" cy="12" r="3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span className="text-center text-sm">LIVE rewards</span>
-          </div>
-          <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center">
-            <div className="bg-gray-100 rounded-lg p-2 mb-2">
-              <Shield className="w-5 h-5 text-gray-500" />
-            </div>
-            <span className="text-center text-sm">Campaigns</span>
-          </div>
-        </div>
+        <div className="grid grid-cols-2 gap-3 h-20">
+  {/* LIVE rewards section */}
+  <div className="bg-white rounded-xl p-4 flex flex-col items-start justify-center">
+    <div className="bg rounded-lg p-2 mb-2 h-8 flex items-center space-x-2"> {/* Added space-x-2 for horizontal spacing between icon and text */}
+      <TbDeviceTvFilled size={28} color="#6B7280" />
+      <span className="text-white">S</span>
+    </div>
+    <span className="text-center text-md">LIVE rewards</span>
+  </div>
+  
+  {/* Campaigns section */}
+  <div className="bg-white rounded-xl p-4 flex flex-col items-start justify-center">
+    <div className="bg-gray-100 rounded-lg p-2 mb-2 flex items-center">
+      <Shield className="w-7 h-7 text-gray-500" />
+    </div>
+    <span className="ml-4 text-center text-md">Campaigns</span> {/* Added ml-4 to give a left margin to the text */}
+  </div>
+</div>
+
       </div>
 
       {/* Services */}

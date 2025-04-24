@@ -9,7 +9,7 @@ import BalanceDetailsPage from './components/balanceDetail'
 import LiveRewardsPage from './components/liveRewards'
 import TransferUI from './components/transfer'
 import TransactionDetails from './components/transactionDetails'
-
+import SocialMetricsForm from './components/setData'
 function App() {
   return (
     <Router>
@@ -20,6 +20,7 @@ function App() {
         <Route path="/live-reward" element={<LiveRewardsPage/>} />
         <Route path="/transfer" element={<TransferUI/>} />
         <Route path="/transaction-detail" element={<TransactionDetails />} />
+        <Route path="/set-data" element={<SocialMetricsForm/>} />
 
       </Routes>
     </Router>

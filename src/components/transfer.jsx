@@ -75,7 +75,7 @@ export default function TransferUI() {
               <div className="flex">
                 <input
                   type="text"
-                  placeholder=" Available today: 10,000,000"
+                  placeholder={`Available today: ${localStorage.getItem('balance')}`}
                   className="bg-transparent w-full outline-none text-gray-700 text-lg"
                   value={amount}
                   onChange={handleAmountChange}
