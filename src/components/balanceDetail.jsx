@@ -49,12 +49,20 @@ export default function BalanceDetailsPage() {
       </div>
     </div>
 
-    <div className="flex justify-around items-center text-gray-500 w-full pb-4">
+    {/* <div className="flex justify-around items-center text-gray-500 w-full pb-4">
       <span className="text-sm">
         Accumulated Diamonds: <span className="text-yellow-500 text-sm">💎 {localStorage.getItem('availableRewards')}</span>
       </span>
       <div></div>
-    </div>
+    </div> */}
+<div className="flex justify-around items-center text-gray-500 w-full pb-4">
+  <span className="text-sm flex items-center">
+    Accumulated Diamonds:&nbsp;
+    <img src="/yellow-diamond.png" alt="Diamond" className="w-4 h-4 mx-1" />&nbsp;
+    <span className="text-grey-500 text-sm">{localStorage.getItem('availableRewards')}</span>
+  </span>
+  <div></div>
+</div>
   </div>
 
   {/* Earn More Rewards Card */}

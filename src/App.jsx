@@ -12,10 +12,11 @@ import TransactionDetails from './components/transactionDetails'
 import SocialMetricsForm from './components/setData'
 import PWARequired from './components/pwaRequired.'
 import InstallPage from './components/install'
+import ThrowbackFiltersIcon from './components/sliders'
 function App() {
   return (
     <Router>
-      <PWARequired />
+      {/* <PWARequired /> */}
       <Routes>
         <Route path="/" element={<TikTokProfile />} />
         <Route path="/balance" element={<BalancePage/>} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/transaction-detail" element={<TransactionDetails />} />
         <Route path="/set-data" element={<SocialMetricsForm/>} />
         <Route path="/install" element={<InstallPage />} />
+        <Route path="/test" element={<ThrowbackFiltersIcon />} />
 
       </Routes>
     </Router>

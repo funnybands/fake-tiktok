@@ -99,7 +99,7 @@ export default function SocialMetricsForm() {
             <input
               type="text"
               id="availableRewards"
-              value={availableRewards}
+              value={availableRewards || ""}
               onChange={(e) => setAvailableRewards(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border h-10"
               placeholder="Enter available rewards"
@@ -110,7 +110,7 @@ export default function SocialMetricsForm() {
             <input
               type="text"
               id="balance"
-              value={balance}
+              value={balance || ""}
               onChange={(e) => setBalance(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
               placeholder="Enter Balance"
@@ -122,7 +122,7 @@ export default function SocialMetricsForm() {
             <input
               type="text"
               id="following"
-              value={following}
+              value={following || ""}
               onChange={(e) => setFollowing(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
               placeholder="Enter following count"
@@ -134,7 +134,7 @@ export default function SocialMetricsForm() {
             <input
               type="text"
               id="followers"
-              value={followers}
+              value={followers || ""}
               onChange={(e) => setFollowers(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
               placeholder="Enter followers count"
@@ -146,7 +146,7 @@ export default function SocialMetricsForm() {
             <input
               type="text"
               id="likes"
-              value={likes}
+              value={likes || ""}
               onChange={(e) => setLikes(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
               placeholder="Enter likes count"
@@ -158,7 +158,7 @@ export default function SocialMetricsForm() {
             <input
               type="text"
               id="vlikes"
-              value={vlikes}
+              value={vlikes || ""}
               onChange={(e) => setVlikes(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
               placeholder="Enter comma-separated values (e.g. 155.5k,1k,2m)"

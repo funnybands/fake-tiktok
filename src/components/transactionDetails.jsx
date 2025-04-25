@@ -45,8 +45,8 @@ export default function TransactionDetails() {
   };
   const [searchParams] = useSearchParams();
   
-  const amount = searchParams.get('amount');
-  const username = searchParams.get('username');
+  const amount = parseFloat(searchParams.get('amount'));
+  const username = searchParams.get('username');  
   const chanceBalance = ()=>{
      let newbalance=localStorage.getItem('balance')-amount
     localStorage.setItem('balance',newbalance)

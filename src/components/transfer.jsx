@@ -13,9 +13,9 @@ export default function TransferUI() {
           navigate('/balance-detail')
         };
 
-  const totransactionDetail = ()=> {
-    navigate(`/transaction-detail?amount=${amount}&username=${email}`);
-  }
+        const totransactionDetail = ()=> {
+          navigate(`/transaction-detail?amount=${amount}&username=${email}`);
+        }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -59,7 +59,7 @@ export default function TransferUI() {
               type="text"
               placeholder="Email or username"
               className="bg-transparent w-full outline-none text-gray-700 text-lg"
-              value={email}
+              value={email || ""} 
               onChange={handleEmailChange}
             />
             </div>
@@ -77,7 +77,7 @@ export default function TransferUI() {
                   type="text"
                   placeholder={`Available today: ${localStorage.getItem('balance')}`}
                   className="bg-transparent w-full outline-none text-gray-700 text-lg"
-                  value={amount}
+                  value={amount || ""}
                   onChange={handleAmountChange}
                 />
               </div>
