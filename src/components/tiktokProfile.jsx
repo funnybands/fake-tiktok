@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react';
+import { useState , useEffect,useRef} from 'react';
 import { MoreHorizontal, Plus, Home, ShoppingBag, MessageCircle, User, Lock, Repeat, QrCode, Settings, Wallet,ChevronDown } from 'lucide-react';
 import BalancePage from './balance';
 import { useNavigate } from 'react-router-dom';
@@ -101,6 +101,17 @@ export default function TikTokProfile() {
     "/video.mp4",
     "/video.mp4",
   ];
+
+  const videoRefs = useRef([]);
+
+  const handleVideoClick = (index) => {
+    const videoElement = videoRefs.current[index];
+    if (videoElement.paused) {
+      videoElement.play(); // Play the video if it is paused
+    } else {
+      videoElement.pause(); // Pause the video if it is already playing
+    }
+  };
   
   return (
     <div className="flex flex-col bg-white min-h-screen max-w-md mx-auto">
@@ -252,7 +263,7 @@ export default function TikTokProfile() {
         </div>
       </div>
     ))} */}
-    {viewsList.map((views, index) => (
+    {/* {viewsList.map((views, index) => (
   <div key={index} className="relative aspect-[9/16]">
     <video
       src={videos[index]} // Assuming `videos` is an array of video file paths or URLs
@@ -271,7 +282,33 @@ export default function TikTokProfile() {
       {views}
     </div>
   </div>
-))}
+))} */}
+
+
+{viewsList.map((views, index) => (
+        <div key={index} className="relative aspect-[9/16]">
+          <video
+            ref={(el) => (videoRefs.current[index] = el)} // Set the ref for each video
+            src={videos[index]} // Assuming `videos` is an array of video file paths or URLs
+            alt={`Video ${index + 1}`}
+            className="w-full h-full object-cover rounded"
+            onClick={() => handleVideoClick(index)} // Handle play/pause on click
+          />
+          <div className="absolute bottom-2 left-2 flex items-center text-white text-xs bg-black/60 px-1 py-0.5 rounded">
+            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                clipRule="evenodd"
+              />
+            </svg>
+            {views}
+          </div>
+        </div>
+      ))}
+
+
+
 
   </div>
 
