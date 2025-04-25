@@ -16,7 +16,7 @@ const PWARequired = () => {
   }, [navigate]);  // Include navigate in the dependency array to ensure it updates correctly
 
   if (!isPWA) {
-    return <div>This website only works as a App. Please install the app to continue.</div>;
+    return <div>This website can be installed as a  App.</div>;
   }
 
   return null;  // No message if it's installed as a PWA

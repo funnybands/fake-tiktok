@@ -68,11 +68,26 @@ const InstallPage = () => {
   // If the app is not installed and is installable
   return (
     <div>
-      <h1>Install the PWA</h1>
-      <p>This website can be installed as a Progressive Web App. Please install it to continue using the app.</p>
+      <p> Please install it to continue using the app.</p>
 
       {isInstallable && (
-        <button onClick={handleInstallClick}>Install App</button> // Show the button only if PWA is installable
+        <button
+        onClick={handleInstallClick}
+        style={{
+          backgroundColor: '#4CAF50',
+          color: 'white',
+          padding: '10px 20px',
+          fontSize: '16px',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s ease',
+        }}
+        onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'}
+        onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
+      >
+        Install App
+      </button> // Show the button only if PWA is installable
       )}
 
       {!isInstallable && <p>Your browser doesn't support installing this PWA.</p>}
