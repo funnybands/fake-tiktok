@@ -14,7 +14,7 @@ export default function BalanceDetailsPage() {
   return (
     <div className="bg-black/15 min-h-screen text-white font-sans max-w-md mx-auto">
       {/* Header */}
-      <div className='bg-black/80 h-35'>
+      <div className='bg-black/80 h-50'>
       <br />
       <div className="flex items-center justify-center relative py-10 px-4">
         <button 
@@ -35,10 +35,10 @@ export default function BalanceDetailsPage() {
     <div className="text-4xl font-bold">USD{localStorage.getItem('balance')}</div>
     </div>
     </div>
-
-<div className="flex flex-col gap-4 px-4">
+<div className=' relative -top-15 flex justify-center items-center'>
+<div className="flex flex-col  justify-center items-center gap-4 px-4 w-98">
   {/* Live Rewards Card */}
-  <div className="flex flex-col justify-center items-center bg-white rounded-xl overflow-hidden text-black w-full h-36" onClick={toliveReward}>
+  <div className="flex flex-col justify-center w-102 items-center bg-white rounded-xl overflow-hidden text-black w-full h-36" onClick={toliveReward}>
     <div className="p-4 flex justify-around items-center border-grey w-full">
       <div className="flex items-center">
         <h2 className="text-lg font-semibold">LIVE rewards</h2>
@@ -48,13 +48,6 @@ export default function BalanceDetailsPage() {
         <ChevronRight className="w-5 h-5 text-gray-400" />
       </div>
     </div>
-
-    {/* <div className="flex justify-around items-center text-gray-500 w-full pb-4">
-      <span className="text-sm">
-        Accumulated Diamonds: <span className="text-yellow-500 text-sm">💎 {localStorage.getItem('availableRewards')}</span>
-      </span>
-      <div></div>
-    </div> */}
 <div className="flex justify-around items-center text-gray-500 w-full pb-4">
   <span className="text-sm flex items-center">
     Accumulated Diamonds:&nbsp;
@@ -75,7 +68,7 @@ export default function BalanceDetailsPage() {
         Check out the Monetization Center for exciting opportunities and programs.
       </p>
       <div className="mt-2 w-full">
-        <span className="text-pink-600 font-medium flex items-center">
+        <span className="text-[#FE2A53] font-medium flex items-center">
           Explore
           <ChevronRight className="w-4 h-4 ml-1" />
         </span>
@@ -105,6 +98,7 @@ export default function BalanceDetailsPage() {
 
 
 
+</div>
 </div>
 
 

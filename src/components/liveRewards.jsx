@@ -21,26 +21,28 @@ const LiveRewardsPage = () => {
       setMonthDate(formattedDate)
   },[])
   return (
-    <div className="bg-gray-75 min-h-screen w-full max-w-md mx-auto font-sans">
+    <div className="flex flex-col items-center  bg-gray-50 min-h-screen w-full max-w-md mx-auto font-sans">
   {/* Header */}
-  <div className="flex items-center justify-between p-6 h-15"> {/* Increased padding */}
+  <div className="flex items-center justify-around gap-5 p-6 h-15 w-full"> {/* Increased padding */}
     <ArrowLeft size={24} onClick={goBack} />
-    <h1 className="text-2xl font-bold">LIVE rewards</h1> {/* Increased font size */}
+    <div></div>
+    <h1 className="text-2xl font-bold">LIVE rewards</h1> 
+    {/* Increased font size */}
+    <div></div>
     <MoreHorizontal size={24} />
   </div>
 
-  <div className="flex flex-col justify-center bg-white rounded-lg mx-4 p-6 shadow-sm"> {/* Increased padding */}
+  <div className="flex flex-col justify-center bg-white rounded-lg mx-4 p-6  w-98"> {/* Increased padding */}
     {/* Identity Verified Message */}
-    <div className=" rounded-md p-4 mb-6 flex justify-around items-start h-15 w-100%"> {/* Increased padding and margin */}
+    <div className=" rounded-md p-4 mb-6 flex shadow-sm justify-around items-start h-15 w-100% leading-tight"> {/* Increased padding and margin */}
       <div className='flex flex-col items-start'>
         <h3 className="font-bold text-gray-900 text-lg">Identity verified</h3> {/* Increased font size */}
         <p className="text-gray-500 text-sm">Your identity is verified. You can continue with transactions.</p>
       </div>
       <span className="text-gray-400 text-lg">&times;</span>
     </div>
-
     {/* Accumulated Diamonds */}
-    <div className="flex justify-center items-center gap-2 text-gray-500 mb-8 py-3 h-15"> {/* Increased margin and padding */}
+    <div className="flex justify-center items-center shadow-sm gap-2 text-gray-500 mb-8 py-3 h-15"> {/* Increased margin and padding */}
       <span className="text-lg">Accumulate Diamonds:</span> {/* Increased font size */}
       {/* <Heart className="text-amber-400 fill-amber-400" size={18} /> Increased size of icon */}
       <MdDiamond
@@ -75,6 +77,7 @@ const LiveRewardsPage = () => {
       <div className="flex flex-col justify-center items-start mb-3 h-15"> {/* Increased margin bottom */}
         <div className='flex justify-around items-center w-full'>
         <p className="text-gray-500 text-sm">Daily withdrawal limit (Remain/Total)</p> {/* Increased font size */}
+        <div></div>
         <span className="text-gray-500 float-right text-sm">$100/$100</span> 
         </div>
         <div className='flex justify-around w-80'>
