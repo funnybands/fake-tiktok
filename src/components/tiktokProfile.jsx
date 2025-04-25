@@ -93,13 +93,13 @@ export default function TikTokProfile() {
       }
     }
   }, []);
-  const thumbnails = [
-    "/thumbnail.jpg",
-    "/thumbnail.jpg",
-    "/thumbnail.jpg",
-    "/thumbnail.jpg",
-    "/thumbnail.jpg",
-    "/thumbnail.jpg",
+  const videos = [
+    "/video.mp4",
+    "/video.mp4",
+    "/video.mp4",
+    "/video.mp4",
+    "/video.mp4",
+    "/video.mp4",
   ];
   
   return (
@@ -233,7 +233,7 @@ export default function TikTokProfile() {
       </div>
 
       <div className="grid grid-cols-3 gap-1 p-1">
-    {viewsList.map((views, index) => (
+    {/* {viewsList.map((views, index) => (
       <div key={index} className="relative aspect-[9/16]">
         <img
           src={thumbnails[index]}
@@ -251,7 +251,28 @@ export default function TikTokProfile() {
           {views}
         </div>
       </div>
-    ))}
+    ))} */}
+    {viewsList.map((views, index) => (
+  <div key={index} className="relative aspect-[9/16]">
+    <video
+      src={videos[index]} // Assuming `videos` is an array of video file paths or URLs
+      alt={`Video ${index + 1}`}
+      className="w-full h-full object-cover rounded"
+      controls
+    />
+    <div className="absolute bottom-2 left-2 flex items-center text-white text-xs bg-black/60 px-1 py-0.5 rounded">
+      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+        <path
+          fillRule="evenodd"
+          d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+          clipRule="evenodd"
+        />
+      </svg>
+      {views}
+    </div>
+  </div>
+))}
+
   </div>
 
 

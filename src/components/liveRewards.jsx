@@ -45,10 +45,7 @@ const LiveRewardsPage = () => {
     <div className="flex justify-center items-center shadow-sm gap-2 text-gray-500 mb-8 py-3 h-15"> {/* Increased margin and padding */}
       <span className="text-lg">Accumulate Diamonds:</span> {/* Increased font size */}
       {/* <Heart className="text-amber-400 fill-amber-400" size={18} /> Increased size of icon */}
-      <MdDiamond
-        size={24}  // Adjust size as needed
-        style={{ color: 'gold', textShadow: '0 0 10px rgba(255, 215, 0, 0.7)' }} // Gold color with a glowing effect
-      />
+      <img src="/yellow-diamond.png" alt="Diamond" className="w-5 h-5 mx-1" />
       <span className="text-lg">{localStorage.getItem('availableRewards')}</span> {/* Increased font size */}
       <Info size={18} className="ml-2 text-gray-400" />
     </div>
