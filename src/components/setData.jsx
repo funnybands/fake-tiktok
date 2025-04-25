@@ -113,6 +113,9 @@ export default function SocialMetricsForm() {
     localStorage.removeItem('username');
     localStorage.removeItem('bio');
     localStorage.removeItem('name')
+    localStorage.removeItem('transferhistory')
+    localStorage.removeItem('transferred')
+    localStorage.removeItem('username')
     
     // Reset state
     setAvailableRewards('');
@@ -123,6 +126,7 @@ export default function SocialMetricsForm() {
     setBalance('');
     setUsername('');
     setName('')
+    setBioText('')
     setShowSavedData(false);
   };
 
@@ -225,7 +229,7 @@ export default function SocialMetricsForm() {
           </div>
           <br />
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Username</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
             <input
               type="text"
               id="name"
@@ -296,7 +300,7 @@ export default function SocialMetricsForm() {
               <h2 className="text-lg font-medium text-gray-900">Saved Data</h2>
               <button 
                 onClick={clearData}
-                className="text-sm text-red-600 hover:text-red-800"
+                className="text-sm bg-red-500 rounded-md text-white hover:text-white"
               >
                 Clear Data
               </button>
@@ -307,6 +311,9 @@ export default function SocialMetricsForm() {
               <p><span className="font-semibold">Following:</span> {following}</p>
               <p><span className="font-semibold">Followers:</span> {followers}</p>
               <p><span className="font-semibold">Likes:</span> {likes}</p>
+              <p><span className="font-semibold">VLikes:</span> {vlikes}</p>
+              <p><span className="font-semibold">Name</span> {name}</p>
+              <p><span className="font-semibold">Username</span> {username}</p>
               <p><span className="font-semibold">VLikes:</span> {vlikes}</p>
             </div>
           </div>
