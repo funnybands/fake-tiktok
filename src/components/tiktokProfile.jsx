@@ -183,7 +183,7 @@ export default function TikTokProfile() {
 
       {/* Content tabs */}
       <div className="mt-5 border-b border-gray-200">
-        <div className="flex justify-around">
+        <div className="flex justify-around h-7">
           <div className="flex">
           <button 
             className={`px-4 py-2 ${activeTab === 'videos' ? 'border-b-2 border-black' : ''}`}
@@ -191,19 +191,19 @@ export default function TikTokProfile() {
           >
             <ThrowbackIcon/>
           </button>
-          <div className="relative top-2 text-black text-xs">▼</div>
+          <div className="relative top-2 left-1 text-black text-xs">▼</div>
           </div>
           <button 
             className={`px-4 py-2 ${activeTab === 'locked' ? 'border-b-2 border-black' : ''}`}
             onClick={() => setActiveTab('locked')}
           >
-            <FiLock size={28} className="text-gray-500"/>
+            <FiLock size={24} className="text-gray-500"/>
           </button>
           <button 
             className={`px-4 py-2 ${activeTab === 'liked' ? 'border-b-2 border-black' : ''}`}
             onClick={() => setActiveTab('liked')}
           >
-            <Repeat className="w-7 h-7 mx-auto transform rotate-90 text-gray-500" />
+            <Repeat className="w-6 h-6 mx-auto transform rotate-90 text-gray-500" />
           </button>
           <div className="flex w-6">
           <button 
@@ -211,11 +211,11 @@ export default function TikTokProfile() {
             onClick={() => setActiveTab('bookmarked')}
           >
             <div className="flex justify-center items-center gap-2">
-              <RiBookmarkLine size={26} className="text-gray-500"/>          
+              <RiBookmarkLine size={24} className="text-gray-500"/>          
             </div>
           </button>
           <div className="relative top-1.5 right-3.5 text-xs rounded-ful flex items-center justify-center">
-              <FaEyeSlash size={15} className="text-gray-500"/>
+              <FaEyeSlash size={12} className="text-gray-500"/>
               </div>
           </div>
           <div className="flex w-6">
@@ -223,10 +223,10 @@ export default function TikTokProfile() {
             className={`px-4 py-2 text-gray-500 ${activeTab === 'saved' ? 'border-b-2 border-black' : ''}`}
             onClick={() => setActiveTab('saved')}
           >
-              <FaRegHeart size={28} />
+              <FaRegHeart size={24} />
           </button>
           <div className="relative top-1.5 right-3.5 text-xs rounded-ful flex items-center justify-center">
-              <FaEyeSlash size={15} className="text-gray-500"/>
+              <FaEyeSlash size={12} className="text-gray-500"/>
               </div>
               </div>
         </div>

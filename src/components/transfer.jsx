@@ -34,9 +34,9 @@ export default function TransferUI() {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 h-15">
       <ArrowLeft size={24} onClick={goBack} />
-        <div className="text-lg font-semibold text-gray-900">Tranfer</div>
+        <div className="text-xl font-semibold text-gray-900">Tranfer</div>
         <HelpCircle size={24} className="text-gray-700" />
       </div>
 
@@ -45,7 +45,7 @@ export default function TransferUI() {
         <div className="bg-white rounded-lg shadow p-5 mb-4 w-90">
           <div className="flex justify-between items-center  h-15 w-90" >
             <div className="text-lg font-medium text-gray-800 w-40">Tranfer amount</div>
-            <button className="text-pink-500 font-medium w-20">Manage</button>
+            <button className="text-[#FE2A53] font-medium w-20">Manage</button>
           </div>
 
           {/* Email/Username Field - Increased height */}
@@ -82,7 +82,7 @@ export default function TransferUI() {
                 />
               </div>
             </div>
-            <button className="text-pink-500 font-medium ml-2 w-10">All</button>
+            <button className="text-[#FE2A53] font-medium ml-2 w-10">All</button>
           </div>
 
           <div className="border-t border-gray-200 my-4"></div>
@@ -93,8 +93,8 @@ export default function TransferUI() {
             <div className="text-xl font-medium">-</div>
           </div>
         </div>
-        <div className="p-4 mt-auto">
-        <div className="text-xs text-gray-500 mb-4 text-center">
+        <div className="flex flex-col justify-center items-center w-92 p-4 mt-auto">
+        <div className="text-sm text-gray-500 mb-4 text-start">
           TikTok Terms of Service and Privacy Policy. Payment transactions are processed by PIPO. PIPO Privacy Policy
         </div>
         

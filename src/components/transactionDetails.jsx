@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle, Copy, ChevronRight } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { SiNewbalance } from 'react-icons/si';
+import { TiTick } from "react-icons/ti";
 
 export default function TransactionDetails() {
   const [currentDateTime, setCurrentDateTime] = useState('');
@@ -89,7 +90,9 @@ export default function TransactionDetails() {
           <div className="flex justify-between items-center py-3 border-b border-gray-100 h-12 w-90">
             <div className="text-gray-500">Status</div>
             <div className="flex items-center">
-              <CheckCircle size={16} className="text-green-500 mr-2" />
+              <div className='rounded-full bg-green-500'>
+               <TiTick className='text-white'/>
+              </div>
               <span className="font-medium">Completed</span>
             </div>
           </div>
