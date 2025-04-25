@@ -46,12 +46,27 @@ export default function BalancePage() {
       {/* Coins Card */}
       <div className='flex justify-center items-center w-full'>
       <div className="flex-col justify-center w-102 items-start mx-4 bg-black/89 rounded-xl overflow-hidden">
+      <br />
       <div className='flex justify-around'>
-      <div className="text-gray-400 text-md mb-1">Coins</div>
-      <div className='w-80'></div>
+      <div className="text-gray-400 text-md mb-1">Estimated balance</div>
+      <div className='w-55'></div>
       </div>
       <div className="flex-col justify-around p-4 h-20">
           <div className="flex justify-around items-center">
+          <p className=" font-bold text-white leading-tight"><span className='text-xs'>USD </span><span className='text-xl'>{localStorage.getItem('balance')}</span></p>
+            <div className='w-38'></div>
+            <div className="flex items-center text-gray-400">
+              <span className="text-xl">View</span>
+              <ChevronRight className="w-4 h-4" />
+            </div>
+          </div>
+      </div>
+
+      <div className="flex justify-around items-center border-t border-gray-700 p-4 h-20" onClick={toBalanceDetail}>
+          <div className="flex justify-around items-center">
+
+            <div className='flex flex-col justify-around items-start'>
+            <p className="text-gray-400 text-sm leading-tight">Coins</p>
             <div className="flex items-center">
             <div className=" w-6 h-6 rounded-full overflow-hidden mr-2 object-cover">
               <img src="/coin.png" alt="" className="object-cover" />
@@ -59,24 +74,10 @@ export default function BalancePage() {
 
               <span className="text-2xl font-bold text-white">{localStorage.getItem('availableRewards')}</span>
             </div>
+            </div>
             <div className='w-40'></div>
             <div className="flex items-center text-gray-400">
               <span className="text-sm">Get Coins</span>
-              <ChevronRight className="w-4 h-4" />
-            </div>
-          </div>
-      </div>
-
-      <div className="border-t border-gray-700 p-4 h-20" onClick={toBalanceDetail}>
-          <div className="flex justify-around items-center">
-
-            <div className='flex flex-col justify-around items-start'>
-            <p className="text-gray-400 text-sm leading-tight">Estimated balance</p>
-            <p className="text-xl font-bold text-white leading-tight">USD{localStorage.getItem('balance')}</p>
-            </div>
-            <div className='w-40'></div>
-            <div className="flex items-center text-gray-400">
-              <span className="text-sm">View</span>
               <ChevronRight className="w-4 h-4" />
             </div>
 
