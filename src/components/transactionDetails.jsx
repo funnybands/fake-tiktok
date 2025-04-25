@@ -23,7 +23,8 @@ export default function TransactionDetails() {
     
     // Generate random transaction ID
     setTransactionId(generateTransactionId());
-  }, []);
+    savetransaction()
+  }, [currentDateTime]);
   
   const formatDateTime = (date) => {
     return date.toLocaleDateString('en-US', {
@@ -45,16 +46,37 @@ export default function TransactionDetails() {
     return numbers + suffix;
   };
   const [searchParams] = useSearchParams();
+  const savetransaction = () => {
+    const dateTime = currentDateTime;
+    const transferredAmount = amount;
+    if (dateTime && transferredAmount){
+    const newEntry = [dateTime, transferredAmount]; // array of [datetime, amount]
+  
+    // Get existing history or start with empty array
+    const existingHistory = JSON.parse(localStorage.getItem('transferhistory')) || [];
+  
+    // Add the new transaction
+    existingHistory.unshift(newEntry);
+  
+    // Save back to localStorage
+    localStorage.setItem('transferhistory', JSON.stringify(existingHistory));
+  }
+  };
   
   const amount = parseFloat(searchParams.get('amount'));
   const username = searchParams.get('username');  
-  const chanceBalance = ()=>{
-     let newbalance=localStorage.getItem('balance')-amount
+  const changeBalance = ()=>{
+    const cBalance=localStorage.getItem('balance')
+    const cleanBalance= cBalance.replace(/,/g, "");
+     let newbalance=cleanBalance-amount
+     let transferred=parseFloat(localStorage.getItem('transferred'))+amount
     localStorage.setItem('balance',newbalance)
+    localStorage.setItem('transferred',transferred)
 
   }
-  chanceBalance()
+  changeBalance()
 
+  
   const handleCopyTransactionId = () => {
     navigator.clipboard.writeText(transactionId)
       .then(() => alert('Transaction ID copied to clipboard'))

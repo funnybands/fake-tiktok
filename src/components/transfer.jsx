@@ -10,7 +10,7 @@ export default function TransferUI() {
   const [isButtonActive, setIsButtonActive] = useState(false);
     const navigate = useNavigate();
         const goBack = () => {
-          navigate('/balance-detail')
+          navigate('/live-reward')
         };
 
         const totransactionDetail = ()=> {
@@ -30,6 +30,7 @@ export default function TransferUI() {
   const updateButtonState = (emailValue, amountValue) => {
     setIsButtonActive(emailValue.length > 0 && amountValue.length > 0);
   };
+  
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">

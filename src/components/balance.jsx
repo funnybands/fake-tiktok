@@ -12,7 +12,11 @@ export default function BalancePage() {
   const toBalanceDetail = () => {
     navigate('/balance-detail')
   };
-
+  const shortenName = (name) => {
+  const firstPart = name.slice(0, 3); // First 3 characters
+  const lastThree = name.slice(-3);
+  return `${firstPart}...${lastThree}'s balance`;
+  }
   return (
     // <div className="bg-gray-100 min-h-screen text-gray-900 font-sans max-w-md mx-auto">
     <div className="flex-col justify-center items-center m-0 p-0 bg-gray-100 min-h-screen text-gray-900 font-sans w-full max-w-md mx-auto leading-tight">
@@ -35,10 +39,12 @@ export default function BalancePage() {
 
       {/* User Balance Header */}
       <div className="px-4 pb-3">
-        <div className="flex justify-around items-center">
-          <h1 className="text-3xl font-bold">Mys...Man's balance</h1>
-          <Shield className="relative -left-8.5 w-7 h-7 text-green-600 fill-current" />
-          <User className="relative right-24.5 w-4 h-4 text-white fill-current" />
+        <div className="flex justify-around gap-7 items-center">
+          <h1 className="text-3xl font-bold">{shortenName(localStorage.getItem('name'))}</h1>
+          <div className=''>
+          <Shield className="relative -left-21 top-3 w-7 h-7 text-green-600 fill-current" />
+          <User className="relative right-19.5 bottom-2 w-4 h-4 text-white fill-current" />
+          </div>
         </div>
       </div>
       <br />
@@ -51,7 +57,7 @@ export default function BalancePage() {
       <div className="text-gray-400 text-md mb-1">Estimated balance</div>
       <div className='w-55'></div>
       </div>
-      <div className="flex-col justify-around p-4 h-20">
+      <div className="flex-col justify-around p-4 h-20"  onClick={toBalanceDetail}>
           <div className="flex justify-around items-center">
           <p className=" font-bold text-white leading-tight"><span className='text-xs'>USD </span><span className='text-xl'>{localStorage.getItem('balance')}</span></p>
             <div className='w-38'></div>
@@ -129,7 +135,7 @@ export default function BalancePage() {
     <div className='flex flex-col'>
     <div className="bg rounded-lg p-2 mb-2 h-8 flex items-center space-x-2"> {/* Added space-x-2 for horizontal spacing between icon and text */}
       <TbDeviceTvFilled size={28} color="#6B7280" />
-      <span className="relative right-4.5 text-white">S</span>
+      <span className="relative right-5 text-white">S</span>
     </div>
     <span className="text-center text-md">LIVE rewards</span>
     </div>
@@ -161,19 +167,19 @@ export default function BalancePage() {
           <div className="flex justify-around items-center p-4 border-b border-gray-100 h-20">
             <div className="flex items-center">
               <div className="bg-gray-100 rounded p-1 mr-3">
-              <ImFileText color='grey'/>
+              <ImFileText color='grey' size={16}/>
               </div>
-              <span className="text-base">Transactions</span>
+              <span className="text-base">&nbsp;Transactions</span>
             </div>
-            <div className='w-40'></div>
+            <div className='w-46'></div>
             <ChevronRight className="w-5 h-5 text-gray-300" />
           </div>
           
           <div className="flex justify-around items-center p-4 h-20">
-            <div className="flex items-center">
-              <div className="rounded p-1 mr-3">
-              <Shield className=" -left-8.5 w-7 h-7 text-gray-400 fill-current" />
-              <User className="relative -top-5.5 left-1.5 w-4 h-4 text-white fill-current" />
+            <div className="flex items-center w-50">
+              <div className="items-center rounded p-1 mr-3">
+              <Shield className="relative top-2 w-7 h-7 text-gray-400 fill-current" />
+              <User className="relative -top-3 left-1.5 w-4 h-4 text-white fill-current" />
               </div>
               <span className="text-base">Identity verification</span>
             </div>

@@ -11,6 +11,7 @@ import { RiBookmarkLine, RiEyeLine } from "react-icons/ri";
 import { FiLock } from "react-icons/fi";
 import { BiRepost } from "react-icons/bi";
 import ThrowbackIcon from './sliders';
+import { RiUserStarLine } from "react-icons/ri";
 
 
 
@@ -79,11 +80,19 @@ export default function TikTokProfile() {
   
   const openSettings = () => setIsSettingsOpen(true);
   const closeSettings = () => setIsSettingsOpen(false);
-
+  const [username, setUsername] = useState('');
   const [viewsList, setViewsList] = useState([]);
 
   useEffect(() => {
     const storedLikes = localStorage.getItem('vlikes');
+    const allowedUsernames = ['@mysterygiftmanofficial', '@john', '@admin', '@tester'];
+    const storedUsername = localStorage.getItem('username');
+    if (allowedUsernames.includes(storedUsername)) {
+      setUsername(storedUsername);
+    }
+    else{
+      setUsername("@mysterygiftmanofficial")
+    }
     if (storedLikes) {
       try {
         const parsedViews = JSON.parse(storedLikes);
@@ -139,24 +148,24 @@ export default function TikTokProfile() {
       </div>
 
       {/* Profile info */}
-      <div className="flex flex-col items-center p-4 h-80">
-        <div className="relative">
+      <div className="flex flex-col items-center p-4 h-80 leading-tight">
+        <div className="relative leading-tight">
         <div className="relative z-6 text-gray-700 bg-white border border-gray-100 rounded-sm text-sm mx-auto shadow-md leading-tight">Thought<br></br>s?</div>
           <div className="w-25 h-25 bg-black rounded-full flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full bg-black rounded-full"></div>
+            {/* <div className="w-full h-full bg-black rounded-full"></div> */}
+            <img src="/profile.jpg" alt="" />
           </div>
           <div className="absolute bottom-0 right-0 bg-cyan-400 border-3 border-white rounded-full w-7 h-7 flex items-center justify-center text-white">
             <Plus className="w-5 h-5" />
           </div>
         </div>
         <br />
-
         <div className="mt-1 leading-tight h-15">
           <h1 className="text-xl font-semibold flex items-center">
-            Mystery Gift Man
-            <ChevronDown className="relative -right-1 w-4 h-4 ml-1" />
+            {localStorage.getItem('name')}
+            <ChevronDown className="relative top-0.5 right-0.5 w-4 h-4 ml-1" />
           </h1>
-          <p className="text-gray-500 text-sm">@mysterygiftmanofficial</p>
+          <p className="text-gray-500 text-sm">{username}</p>
           <button className="relative -top-11.5 -right-30 bg-gray-100 text-black px-6 py-1 rounded-xl w-11 h-7 text-sm">Edit</button>
         </div>
 
@@ -179,14 +188,12 @@ export default function TikTokProfile() {
           <div></div>
         </div>
         <div className="w-full text-center mt-4 text-sm text-gray-600">
-          <p>This is my only account, I don't have any other accounts.</p>
-          <p>Mr Saed</p>
-          <p className="flex items-center justify-center">From Qatar <span className="ml-1">🇶🇦</span></p>
+        <p className='h-5'>{JSON.parse(localStorage.getItem('bio'))?.[0]}</p>
+        <p className='h-5'>{JSON.parse(localStorage.getItem('bio'))?.[1]}</p>
+          <p className="flex items-center justify-center h-6"><p>{JSON.parse(localStorage.getItem('bio'))?.[2]}</p> </p>
           <div className="flex items-center justify-center mt-1">
-            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-            </svg>
-            <p>TikTok Studio</p>
+          <RiUserStarLine className='text-black' size={15} />
+            <p className='font-bold text-gray-800 text-md'>TikTok Studio</p>
           </div>
         </div>
       </div>

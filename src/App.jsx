@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -14,9 +14,28 @@ import PWARequired from './components/pwaRequired.'
 import InstallPage from './components/install'
 import ThrowbackFiltersIcon from './components/sliders'
 function App() {
+  useEffect(() => {
+    const existing = localStorage.getItem('username');
+    const existingname = localStorage.getItem('name');
+    const transferredamount = localStorage.getItem('transferred')
+    const transferredhistory = localStorage.getItem('transferhistory')
+    const currentBalance= localStorage.getItem('balance')
+    if (!existing) {
+      localStorage.setItem('username', '@mysterygiftmanofficial');
+    }
+    if (!existingname) {
+      localStorage.setItem('name', 'Mystery Gift Man');
+    }
+    if (!transferredamount || isNaN(transferredamount)) {
+      localStorage.setItem('transferred', 0);
+    }
+    if (!transferredhistory) {
+      localStorage.setItem('transferhistory', '0');
+    }
+  }, []);
   return (
     <Router>
-      <PWARequired />
+      {/* <PWARequired /> */}
       <Routes>
         <Route path="/" element={<TikTokProfile />} />
         <Route path="/balance" element={<BalancePage/>} />

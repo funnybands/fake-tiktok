@@ -11,9 +11,39 @@ export default function SocialMetricsForm() {
   const [likes, setLikes] = useState('');
   const [vlikes, setVlikes] = useState('');
   const [showSavedData, setShowSavedData] = useState(false);
+  const [username, setUsername] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [inputNameValue, setInputNameValue] = useState('');
+  const [bioText, setBioText] = useState('');
+  const [lines,setLines] = useState('')
+  const [name,setName]= useState('');
   const navigate=useNavigate();
   
+  const allowedUsernames = ['@mysterygiftmanofficial', '@john', '@admin', '@tester'];
 
+  const handleUsernameChange = (e) => {
+    const input = e.target.value;
+    setInputValue(input);
+    if (allowedUsernames.includes(input)) {
+      setUsername(input);
+    }
+  };
+  const handleNameChange = (e) => {
+    const nameInput = e.target.value;
+    setInputNameValue(nameInput);
+    if (allowedUsernames.includes(localStorage.getItem('username'))) {
+      setName(nameInput);
+    }
+  };
+  const handleBioChange = (e) => {
+    const value = e.target.value;
+    setBioText(value);
+
+    // Split by line breaks and filter out empty lines
+    const lines = value.split('\n').map(line => line.trim()).filter(line => line !== '');
+    setLines(lines)
+    // Save to localStorage
+  };
   // Load data from localStorage on component mount
   useEffect(() => {
     const storedAvailableRewards = localStorage.getItem('availableRewards');
@@ -22,12 +52,18 @@ export default function SocialMetricsForm() {
     const storedFollowers = localStorage.getItem('followers');
     const storedLikes = localStorage.getItem('likes');
     const storedVlikes = localStorage.getItem('vlikes');
+    const storedUsername = localStorage.getItem('username');
+    const savedBio = JSON.parse(localStorage.getItem('bio'));
+    const storedName = localStorage.getItem('name')
 
     if (storedAvailableRewards) setAvailableRewards(storedAvailableRewards);
-    if (storedBalance) setAvailableRewards(setBalance);
+    if (storedBalance) setBalance(storedBalance);
     if (storedFollowing) setFollowing(storedFollowing);
     if (storedFollowers) setFollowers(storedFollowers);
     if (storedLikes) setLikes(storedLikes);
+    if (storedUsername) setUsername(storedUsername);
+    if (savedBio) setBioText(savedBio.join('\n'))
+    if (storedName)setName(storedName)
     if (storedVlikes) {
       try {
         const parsedVlikes = JSON.parse(storedVlikes);
@@ -38,7 +74,7 @@ export default function SocialMetricsForm() {
     }
 
     // Show saved data if any data exists
-    if (storedAvailableRewards || balance|| storedFollowing || storedFollowers || storedLikes || storedVlikes) {
+    if (storedAvailableRewards || balance|| storedFollowing || storedFollowers || storedLikes || storedVlikes || storedUsername || savedBio || storedName) {
       setShowSavedData(true);
     }
   }, []);
@@ -59,6 +95,9 @@ export default function SocialMetricsForm() {
     localStorage.setItem('followers', followers);
     localStorage.setItem('likes', likes);
     localStorage.setItem('vlikes', JSON.stringify(vlikesArray));
+    localStorage.setItem('username', username);
+    localStorage.setItem('bio', JSON.stringify(lines))
+    localStorage.setItem('name',name)
     
     setShowSavedData(true);
   };
@@ -71,6 +110,9 @@ export default function SocialMetricsForm() {
     localStorage.removeItem('likes');
     localStorage.removeItem('vlikes');
     localStorage.removeItem('balance');
+    localStorage.removeItem('username');
+    localStorage.removeItem('bio');
+    localStorage.removeItem('name')
     
     // Reset state
     setAvailableRewards('');
@@ -79,8 +121,25 @@ export default function SocialMetricsForm() {
     setLikes('');
     setVlikes('');
     setBalance('');
+    setUsername('');
+    setName('')
     setShowSavedData(false);
   };
+
+
+  const defaultFontSize = 16;
+
+  const [selectedSize, setSelectedSize] = useState(() => {
+    const saved = localStorage.getItem('fontSize');
+    return saved ? parseInt(saved, 10) : defaultFontSize;
+  });
+
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${selectedSize}px`;
+    localStorage.setItem('fontSize', selectedSize);
+  }, [selectedSize]);
+
+  const sizes = [12,12.5,13,13.5, 14,14.5, 15,15.5, 16,16.5, 17,17.5 ,18];
 
   return (
     <>
@@ -165,13 +224,68 @@ export default function SocialMetricsForm() {
             />
           </div>
           <br />
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Username</label>
+            <input
+              type="text"
+              id="name"
+              value={inputNameValue || ""}
+              onChange={(e) =>handleNameChange(e)}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
+              placeholder="Enter Name"
+            />
+          </div>
+          <br />
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+            <input
+              type="text"
+              id="username"
+              value={inputValue || ""}
+              onChange={(e) =>handleUsernameChange(e)}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border  h-10"
+              placeholder="Enter a valid username"
+            />
+          </div>
+          <br />
+          <div>
+      <label htmlFor="bio" className="block text-sm font-medium text-gray-700">Bio</label>
+      <textarea
+        id="bio"
+        rows="5"
+        value={bioText}
+        onChange={handleBioChange}
+        placeholder="Enter your bio. Each line will be saved as a separate item. Enter three lines"
+        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+      ></textarea>
+    </div>
+          <br />
+          <div>
+            <h2>Select Font Size</h2>
+            {sizes.map(size => (
+              <button
+                key={size}
+                onClick={() => setSelectedSize(size)}
+                style={{
+                  margin: '5px',
+                  padding: '10px 20px',
+                  backgroundColor: selectedSize === size ? '#4CAF50' : '#eee',
+                  color: selectedSize === size ? 'white' : 'black',
+                  border: '1px solid #ccc',
+                  cursor: 'pointer',
+                }}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
           
           <div className="flex items-center justify-between pt-2">
             <button
               type="submit"
-              className="w-full bg-indigo-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-xl font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  h-15"
+              className="w-full bg-indigo-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-3xl font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  h-15"
             >
-              Save to Local Storage
+              Save
             </button>
           </div>
         </form>

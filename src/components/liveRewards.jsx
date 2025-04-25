@@ -6,6 +6,7 @@ import { MdDiamond } from 'react-icons/md';
 
 const LiveRewardsPage = () => {
   const [monthDate,setMonthDate]=useState('')
+  const [history, setHistory] = useState([]);
     const navigate = useNavigate();
     const goBack = () => {
       navigate('/balance-detail')
@@ -18,6 +19,8 @@ const LiveRewardsPage = () => {
       const date = new Date();
       const options = { month: 'short', year: 'numeric' };
       const formattedDate = date.toLocaleString('en-US', options);
+      const stored = JSON.parse(localStorage.getItem('transferhistory')) || [];
+      setHistory(stored);
       setMonthDate(formattedDate)
   },[])
   return (
@@ -89,8 +92,8 @@ const LiveRewardsPage = () => {
     <br />
 
     {/* Transactions */}
-    <div className="flex flex-col justify-center items-start border-t border-gray-100 pt-6"> {/* Increased padding top */}
-    <div className='flex justify-around items-center w-35'>
+    <div className="flex flex-col justify-center items-start border-t border-gray-100 pt-6 h-18"> {/* Increased padding top */}
+    <div className='flex justify-around items-center w-30'>
       <h3 className="font-semibold text-gray-800 mb-6 text-lg">Transactions</h3> {/* Increased font size */}
 
     </div>
@@ -101,10 +104,30 @@ const LiveRewardsPage = () => {
         </div>
         <div>
           <span className="text-lg">In: USD{localStorage.getItem('balance')}</span> {/* Increased font size */}
-          <span className="ml-2 text-lg">Out: USD0</span> {/* Increased font size */}
+          <span className="ml-2 text-lg">Out: USD{localStorage.getItem("transferred")}</span> {/* Increased font size */}
         </div>
       </div>
     </div>
+
+
+            {history.map(([dateTime, amount], index) => (
+        <div className="flex flex-col justify-center items-start border-t border-gray-100 pt-6">
+          <div className='flex justify-around items-center w-40'>
+      <h3 className="font-semibold text-gray-800 mb-6 text-lg">Transfer To Tiktok</h3> {/* Increased font size */}
+    </div>      
+        <div key={index} className="flex justify-center items-center text-gray-500 w-full mb-3">
+          <div className='flex justify-around items-center w-full px-4'>
+            <div className="flex items-center">
+              <span className="text-lg">{dateTime}</span>
+            </div>
+            <div>
+              <span className="ml-2 text-lg">Out: USD{amount}</span>
+            </div>
+          </div>
+        </div>
+      </div>  
+      ))}
+
   </div>
 </div>
 
